@@ -1,0 +1,21 @@
+diff -Nur libass-0.14.0-13/SMP/libass.vcxproj libass-0.14.0-13-msvc-link/SMP/libass.vcxproj
+--- libass-0.14.0-13/SMP/libass.vcxproj	2018-12-08 05:37:04.000000000 -0800
++++ libass-0.14.0-13-msvc-link/SMP/libass.vcxproj	2018-12-19 19:22:11.900825262 -0800
+@@ -870,7 +870,7 @@
+       <ModuleDefinitionFile>.\libass.def</ModuleDefinitionFile>
+       <ProfileGuidedDatabase>$(IntDir)\$(TargetName).pgd</ProfileGuidedDatabase>
+       <AdditionalLibraryDirectories>$(OutDir)\lib\x86\;$(ProjectDir)\..\..\prebuilt\lib\x86\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+-      <AdditionalDependencies>freetyped.lib;fontconfigd.lib;fribidid.lib;harfbuzzd.lib;iconvd.lib;%(AdditionalDependencies)</AdditionalDependencies>
++      <AdditionalDependencies>freetyped.lib;fontconfig.lib;fribidi.lib;harfbuzz.lib;iconv.lib;%(AdditionalDependencies)</AdditionalDependencies>
+       <LargeAddressAware>true</LargeAddressAware>
+       <GenerateDebugInformation>true</GenerateDebugInformation>
+       <AdditionalOptions>/IGNORE:4006,4221 %(AdditionalOptions)</AdditionalOptions>
+@@ -1000,7 +1000,7 @@
+       <ModuleDefinitionFile>.\libass.def</ModuleDefinitionFile>
+       <ProfileGuidedDatabase>$(IntDir)\$(TargetName).pgd</ProfileGuidedDatabase>
+       <AdditionalLibraryDirectories>$(OutDir)\lib\x64\;$(ProjectDir)\..\..\prebuilt\lib\x64\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+-      <AdditionalDependencies>freetyped.lib;fontconfigd.lib;fribidid.lib;harfbuzzd.lib;iconvd.lib;%(AdditionalDependencies)</AdditionalDependencies>
++      <AdditionalDependencies>freetyped.lib;fontconfig.lib;fribidi.lib;harfbuzz.lib;iconv.lib;%(AdditionalDependencies)</AdditionalDependencies>
+       <GenerateDebugInformation>true</GenerateDebugInformation>
+       <AdditionalOptions>/IGNORE:4006,4221 %(AdditionalOptions)</AdditionalOptions>
+       <MinimumRequiredVersion>6.1</MinimumRequiredVersion>
