@@ -83,6 +83,24 @@ class LibassConan(ConanFile):
                 for i in ["lib","bin"]:
                     self.copy("*", dst=os.path.join(self.package_folder,i), src=os.path.join(self.build_folder,"..","msvc",i,rplatform))
             self.copy("*", dst=os.path.join(self.package_folder,"licenses"), src=os.path.join(self.build_folder,"..", "msvc","licenses"))
+            tools.mkdir(os.path.join(self.package_folder,"lib","pkgconfig"))
+            shutil.copy(os.path.join(self.build_folder,self._source_subfolder,"libass.pc.in"),
+                        os.path.join(self.package_folder,"lib","pkgconfig","libass.pc"))
+            lib = "-lassd" if self.options.shared else "-lass"
+            replacements = {
+                "@prefix@"          : self.package_folder,
+                "@exec_prefix@"     : "${prefix}/lib",
+                "@libdir@"          : "${prefix}/lib",
+                "@includedir@"      : "${prefix}/include",
+                "@PACKAGE_VERSION@" : self.version,
+                "@PKG_REQUIRES_DEFAULT@" : "",
+                "@PKG_REQUIRES_PRIVATE@" : "harfbuzz, fontconfig, fribidi, freetype2",
+                "@PKG_LIBS_DEFAULT@"     : "",
+                "@PKG_LIBS_PRIVATE@"     : "-liconv",
+                "-lass"                  : lib
+            }
+            for s, r in replacements.items():
+                tools.replace_in_file(os.path.join(self.package_folder,"lib","pkgconfig","libass.pc"),s,r)
 
     def package_info(self):
         self.cpp_info.libs = tools.collect_libs(self)
